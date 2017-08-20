@@ -20,6 +20,7 @@ def load_layer(img, layer, mypath):
             layer.scale(int(layer.width * factor), int(layer.height * factor));
             layer.set_offsets((img.width - layer.width) / 2, (img.height - layer.height) / 2)
             new_image = pdb.gimp_image_duplicate(img)
+            img.remove_layer(layer)
             layer = pdb.gimp_image_merge_visible_layers(new_image, CLIP_TO_IMAGE)
             pdb.gimp_file_save(new_image, layer, outname, '?')
             pdb.gimp_image_delete(new_image)
