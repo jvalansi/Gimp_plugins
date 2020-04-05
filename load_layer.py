@@ -7,9 +7,8 @@ from gimpfu import *
 
 def load_layer(img, layer, mypath):
     for root, dirs, files in walk(mypath):
+        files = filter(lambda x: not x.startswith('.'), files)
         for f in files:
-            if f.startswith('.'):
-              continue
             fname = join(root, f)
             outname = join(root, 'out.'+f)
             # img = image_list()[0]
